@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rido – Bengaluru Cab</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<header class="top-bar">
+  <div class="logo">Rido</div>
+</header>
+
+<main class="page">
+  <section class="control-panel">
+
+    <h1 class="hero-title">Book a Cab in Bengaluru</h1>
+    <p id="locationStatus" class="status-text">🚗 Cab service only</p>
+
+    <!-- SEARCH CARD -->
+    <div class="card input-card">
+
+      <!-- PICKUP -->
+      <div class="input-row">
+        <div class="icon-column">
+          🚗
+          <div class="connector"></div>
+        </div>
+        <div class="input-column">
+          <label>Pickup location</label>
+          <div class="input-with-btn">
+            <input id="pickupInput" placeholder="Enter pickup location"/>
+            <button id="pickupSearchBtn" class="small-btn">Search</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- DROP -->
+      <div class="input-row">
+        <div class="icon-column">📍</div>
+        <div class="input-column">
+          <label>Drop location</label>
+          <div class="input-with-btn">
+            <input id="dropInput" placeholder="Enter drop location"/>
+            <button id="dropSearchBtn" class="small-btn">Search</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="hint-text">
+        Bengaluru only · Cab · Live traffic pricing
+      </div>
+
+      <div class="actions-row">
+        <button id="calculateBtn" class="primary-btn">See fare estimate</button>
+        <button id="bookBtn" class="secondary-btn" disabled>Book cab</button>
+      </div>
+
+    </div>
+
+    <!-- FARE CARD -->
+    <div class="card fare-card">
+      <h2>Ride summary</h2>
+      <div id="zoneInfo">Zone: —</div>
+      <div id="fareInfo">Enter pickup & drop</div>
+    </div>
+
+  </section>
+
+  <section class="map-wrapper">
+    <div id="map"></div>
+  </section>
+</main>
+
+<!-- LOGIN MODAL -->
+<div id="loginModal" class="modal hidden">
+  <div class="modal-box">
+    <h2>Login to Rido</h2>
+    <input id="loginInput" placeholder="Phone or Email" />
+    <button id="loginBtn" class="primary-btn">Send OTP</button>
+    <button onclick="closeLogin()" class="link-btn">Cancel</button>
+  </div>
+</div>
+
+<!-- PAYMENT MODAL -->
+<div id="paymentModal" class="modal hidden">
+  <div class="modal-box">
+    <h2>Select Payment</h2>
+    <button class="pay-btn" onclick="pay('Cash')">💵 Cash</button>
+    <button class="pay-btn" onclick="pay('Card')">💳 Card</button>
+    <button class="pay-btn" onclick="pay('UPI')">📱 UPI</button>
+    <button onclick="closePayment()" class="link-btn">Cancel</button>
+  </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="script.js"></script>
+
+
+</body>
+</html>

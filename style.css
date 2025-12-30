@@ -1,0 +1,491 @@
+/* ============================
+   Base Styles & Layout
+   ============================ */
+
+   *,
+   *::before,
+   *::after {
+     box-sizing: border-box;
+     margin: 0;
+     padding: 0;
+   }
+   
+   :root {
+     --black: #000000;
+     --white: #ffffff;
+     --gray-100: #f2f2f2;
+     --gray-200: #e5e5e5;
+     --gray-400: #9b9b9b;
+     --gray-700: #333333;
+     --accent: #06d6a0;
+     --accent-dark: #04b585;
+     --danger: #ff4d4d;
+     --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.25);
+     --radius-card: 18px;
+     --transition-fast: 0.2s ease;
+   }
+   
+   html,
+   body {
+     height: 100%;
+   }
+   
+   body {
+     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+       Roboto, sans-serif;
+     background: #0b0b0b;
+     color: var(--white);
+   }
+   
+   /* ============================
+      Header
+      ============================ */
+   
+   .top-bar {
+     position: fixed;
+     top: 0;
+     left: 0;
+     right: 0;
+     height: 64px;
+     background: var(--black);
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     padding: 0 32px;
+     z-index: 1000;
+   }
+   
+   .logo {
+     font-size: 24px;
+     font-weight: 700;
+     letter-spacing: -0.5px;
+   }
+   
+   .nav-links {
+     display: flex;
+     align-items: center;
+     gap: 20px;
+   }
+   
+   .nav-links a {
+     color: var(--white);
+     text-decoration: none;
+     font-size: 15px;
+     opacity: 0.9;
+     transition: opacity var(--transition-fast);
+   }
+   
+   .nav-links a:hover {
+     opacity: 0.7;
+   }
+   
+   .btn-pill {
+     padding: 8px 20px;
+     border-radius: 999px;
+     background: var(--white);
+     color: var(--black) !important;
+     font-weight: 600;
+   }
+   
+   .menu-btn {
+     border: none;
+     background: transparent;
+     display: inline-flex;
+     flex-direction: column;
+     gap: 3px;
+     padding: 4px;
+     cursor: pointer;
+   }
+   
+   .menu-btn span {
+     width: 18px;
+     height: 2px;
+     background: var(--white);
+     border-radius: 2px;
+   }
+   
+   /* ============================
+      Main Layout
+      ============================ */
+   
+   .page {
+     display: flex;
+     height: 100vh;
+     padding-top: 64px; /* header height */
+   }
+   
+   /* Left panel with floating cards */
+   .control-panel {
+     position: relative;
+     z-index: 500;
+     flex: 0 0 420px;
+     padding: 32px;
+     display: flex;
+     flex-direction: column;
+     gap: 16px;
+   }
+   
+   .hero-title {
+     font-size: 40px;
+     font-weight: 700;
+     line-height: 1.1;
+     margin-bottom: 8px;
+   }
+   
+   .status-text {
+     font-size: 14px;
+     color: var(--gray-400);
+     margin-bottom: 8px;
+   }
+   
+   /* Right: full-height map */
+   .map-wrapper {
+     position: relative;
+     flex: 1;
+     background: #101010;
+   }
+   
+   #map {
+     width: 100%;
+     height: 100%;
+   }
+   
+   /* ============================
+      Cards & Inputs
+      ============================ */
+   
+   .card {
+     background: rgba(18, 18, 18, 0.96);
+     border-radius: var(--radius-card);
+     box-shadow: var(--shadow-soft);
+     padding: 20px 20px 18px;
+     border: 1px solid rgba(255, 255, 255, 0.06);
+   }
+   
+   .input-card {
+     margin-top: 8px;
+   }
+   
+   .input-row {
+     display: flex;
+     gap: 10px;
+     margin-bottom: 10px;
+   }
+   
+   .icon-column {
+     width: 18px;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+   }
+   
+   .dot {
+     width: 12px;
+     height: 12px;
+     border-radius: 50%;
+     position: relative;
+   }
+   
+   .circle {
+     background: var(--white);
+   }
+   
+   .circle::after {
+     content: "";
+     position: absolute;
+     inset: 3px;
+     border-radius: 50%;
+     background: var(--black);
+   }
+   
+   .square {
+     border-radius: 4px;
+     background: var(--white);
+   }
+   
+   .connector {
+     width: 2px;
+     flex: 1;
+     background: var(--white);
+     opacity: 0.6;
+     margin-top: 2px;
+   }
+   
+   .input-column {
+     flex: 1;
+   }
+   
+   .input-column label {
+     display: block;
+     font-size: 12px;
+     color: var(--gray-400);
+     margin-bottom: 4px;
+   }
+   
+   .input-with-btn {
+     display: flex;
+     gap: 8px;
+     align-items: center;
+   }
+   
+   .input-with-btn input {
+     flex: 1;
+     padding: 10px 12px;
+     border-radius: 12px;
+     border: 1px solid #2a2a2a;
+     background: #141414;
+     color: var(--white);
+     font-size: 14px;
+     outline: none;
+     transition: border-color var(--transition-fast),
+       box-shadow var(--transition-fast), transform var(--transition-fast);
+   }
+   
+   .input-with-btn input::placeholder {
+     color: #6b6b6b;
+   }
+   
+   .input-with-btn input:focus {
+     border-color: var(--white);
+     box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.4);
+     transform: translateY(-1px);
+   }
+   
+   .small-btn {
+     flex-shrink: 0;
+     padding: 8px 10px;
+     border-radius: 999px;
+     border: none;
+     font-size: 12px;
+     background: #1f1f1f;
+     color: var(--white);
+     cursor: pointer;
+     transition: background var(--transition-fast), transform var(--transition-fast);
+   }
+   
+   .small-btn:hover {
+     background: #2e2e2e;
+     transform: translateY(-1px);
+   }
+   
+   .hint-text {
+     font-size: 12px;
+     color: var(--gray-400);
+     margin-top: 6px;
+   }
+   
+   /* ============================
+      Buttons & Actions
+      ============================ */
+   
+   .actions-row {
+     display: flex;
+     gap: 10px;
+     margin-top: 16px;
+   }
+   
+   .primary-btn,
+   .secondary-btn {
+     flex: 1;
+     padding: 12px 16px;
+     border-radius: 999px;
+     border: none;
+     font-size: 15px;
+     font-weight: 600;
+     cursor: pointer;
+     transition: background var(--transition-fast), transform var(--transition-fast),
+       box-shadow var(--transition-fast), opacity var(--transition-fast);
+   }
+   
+   .primary-btn {
+     background: var(--white);
+     color: var(--black);
+   }
+   
+   .primary-btn:hover {
+     background: #eaeaea;
+     transform: translateY(-1px);
+     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+   }
+   
+   .secondary-btn {
+     background: #1c1c1c;
+     color: var(--white);
+   }
+   
+   .secondary-btn:hover:not(:disabled) {
+     background: #262626;
+     transform: translateY(-1px);
+     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+   }
+   
+   .secondary-btn:disabled {
+     opacity: 0.4;
+     cursor: not-allowed;
+   }
+   
+   /* Fare / Ride info */
+   
+   .fare-card {
+     margin-top: 12px;
+   }
+   
+   .fare-card h2 {
+     font-size: 18px;
+     margin-bottom: 8px;
+   }
+   
+   .fare-info {
+     font-size: 14px;
+     color: var(--gray-200);
+     line-height: 1.5;
+   }
+   
+   .fare-info strong {
+     color: var(--white);
+   }
+   
+   /* ============================
+      Map Loading Overlay
+      ============================ */
+   
+   .map-loading {
+     position: absolute;
+     inset: 0;
+     background: rgba(0, 0, 0, 0.35);
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     gap: 10px;
+     z-index: 900;
+     color: var(--white);
+     font-size: 14px;
+   }
+   
+   .map-loading.hidden {
+     display: none;
+   }
+   
+   .spinner {
+     width: 28px;
+     height: 28px;
+     border-radius: 50%;
+     border: 3px solid rgba(255, 255, 255, 0.2);
+     border-top-color: var(--white);
+     animation: spin 0.8s linear infinite;
+   }
+   
+   @keyframes spin {
+     to {
+       transform: rotate(360deg);
+     }
+   }
+   
+   /* ============================
+      Leaflet Customization
+      ============================ */
+   
+   .leaflet-container {
+     background: #151515;
+   }
+   
+   /* Car marker can be slightly larger to stand out */
+   .car-marker-icon {
+     font-size: 20px;
+   }
+   
+   /* ============================
+      Responsive Design
+      ============================ */
+   
+   @media (max-width: 900px) {
+     .page {
+       flex-direction: column;
+     }
+   
+     .control-panel {
+       flex: none;
+       padding: 16px 16px 8px;
+     }
+   
+     .map-wrapper {
+       height: 55vh;
+     }
+   
+     .hero-title {
+       font-size: 30px;
+     }
+   
+     .top-bar {
+       padding: 0 16px;
+     }
+   }
+   
+   @media (max-width: 600px) {
+     .actions-row {
+       flex-direction: column;
+     }
+   
+     .nav-links a:not(.btn-pill) {
+       display: none;
+     }
+   }
+   
+   /* ============================
+      Utility classes
+      ============================ */
+   
+   .hidden {
+     display: none !important;
+   }
+
+   /* MODALS */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.hidden {
+  display: none;
+}
+
+.modal-box {
+  background: #121212;
+  padding: 24px;
+  border-radius: 14px;
+  width: 300px;
+  text-align: center;
+}
+
+.modal-box input {
+  width: 100%;
+  padding: 10px;
+  margin: 12px 0;
+  border-radius: 8px;
+  border: none;
+}
+
+.pay-btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border-radius: 10px;
+  background: #1f1f1f;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.link-btn {
+  background: none;
+  color: #aaa;
+  border: none;
+  margin-top: 10px;
+  cursor: pointer;
+}
