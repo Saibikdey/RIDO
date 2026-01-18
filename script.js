@@ -119,9 +119,9 @@ function calculateFare(distanceKm, timeMin) {
     trafficMultiplier();
 
   // Premium cost
-  if (document.getElementById("premiumService")?.checked) {
-    fare += PREMIUM_COST;
-  }
+  // if (document.getElementById("premiumService")?.checked) {
+  //   fare += PREMIUM_COST;
+  // }
 
   let discount = 0;
   let finalFare = fare;
@@ -262,16 +262,16 @@ function submitFeedback() {
 // ===============================
 function closeLogin() { loginModal.classList.add("hidden"); }
 function closePayment() { paymentModal.classList.add("hidden"); }
-function toggleFare() { document.querySelector(".fare-card").classList.toggle("hidden"); }
-function clearForm() {
-  pickupInput.value = "";
-  dropInput.value = "";
-  pickupMarker?.remove();
-  dropMarker?.remove();
-  routeLine?.remove();
-  bookBtn.disabled = true;
-  alert("Thank you for using Rido 🚗😊");
-}
+// function toggleFare() { document.querySelector(".fare-card").classList.toggle("hidden"); }
+// function clearForm() {
+//   pickupInput.value = "";
+//   dropInput.value = "";
+//   pickupMarker?.remove();
+//   dropMarker?.remove();
+//   routeLine?.remove();
+//   bookBtn.disabled = true;
+//   alert("Thank you for using Rido 🚗😊");
+// }
 
 function loadFeedbackUser() {
   document.getElementById("fbEmail").value = localStorage.getItem("rido_email") || "";
