@@ -7,7 +7,39 @@
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
   <link rel="stylesheet" href="style.css"/>
+
+  <!-- 🎄 FESTIVE OFFERS (INTERNAL CSS) -->
+  <style>
+    .offer-section {
+      margin-top: 20px;
+      background: linear-gradient(135deg, #b30000, #ff3b3b);
+      padding: 24px;
+      border-radius: 18px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.4);
+      color: #fff;
+    }
+
+    .offer-section h2 {
+      margin-bottom: 12px;
+    }
+
+    .offer-section ul {
+      margin: 12px 0;
+      padding-left: 18px;
+    }
+
+    .offer-section li {
+      margin-bottom: 8px;
+    }
+
+    .offer-section .validity {
+      font-style: italic;
+      opacity: 0.9;
+      margin-top: 10px;
+    }
+  </style>
 </head>
+
 <body>
 
 <header class="top-bar">
@@ -15,6 +47,8 @@
 </header>
 
 <main class="page">
+
+  <!-- LEFT PANEL -->
   <section class="control-panel">
 
     <h1 class="hero-title">Book a Cab in Bengaluru</h1>
@@ -50,6 +84,12 @@
         </div>
       </div>
 
+      <!-- PREMIUM SERVICE -->
+      <label style="margin-top:10px; display:block;">
+        <input type="checkbox" id="premiumService">
+        🚘 Premium Cab (+₹200)
+      </label>
+
       <div class="hint-text">
         Bengaluru only · Cab · Live traffic pricing
       </div>
@@ -68,19 +108,43 @@
       <div id="fareInfo">Enter pickup & drop</div>
     </div>
 
+    <!-- CONTROLS -->
+    <button onclick="toggleFare()">Hide / Show Fare</button>
+    <button onclick="clearForm()">Clear</button>
+
+    <!-- 🎄 OFFERS (NOW CORRECTLY PLACED) -->
+    <section class="offer-section">
+      <h2>🎄 Christmas & New Year Special Offers</h2>
+      <p>
+        Celebrate the festive season with <strong>Rido</strong>!  
+        Enjoy <strong>10% OFF</strong> on rides above ₹1000 and exclusive premium cab benefits.
+      </p>
+
+      <ul>
+        <li>🎁 Flat 10% discount on festive rides</li>
+        <li>🚘 Premium cabs at special festive pricing</li>
+        <li>🕒 Available during peak holiday hours</li>
+      </ul>
+
+      <p class="validity">Offer valid till 1st January</p>
+    </section>
+
   </section>
 
+  <!-- MAP -->
   <section class="map-wrapper">
     <div id="map"></div>
   </section>
+
 </main>
 
 <!-- LOGIN MODAL -->
 <div id="loginModal" class="modal hidden">
   <div class="modal-box">
     <h2>Login to Rido</h2>
-    <input id="loginInput" placeholder="Phone or Email" />
-    <button id="loginBtn" class="primary-btn">Send OTP</button>
+    <input id="loginEmail" type="email" placeholder="Email" />
+    <input id="loginPhone" type="tel" placeholder="Phone Number" />
+    <button id="loginBtn" class="primary-btn">Login</button>
     <button onclick="closeLogin()" class="link-btn">Cancel</button>
   </div>
 </div>
@@ -96,9 +160,29 @@
   </div>
 </div>
 
+<!-- FEEDBACK MODAL -->
+<div id="feedbackModal" class="modal hidden">
+  <div class="modal-box">
+    <h2>Rate your ride ⭐</h2>
+    <input id="fbEmail" readonly placeholder="Email" />
+    <input id="fbPhone" readonly placeholder="Phone number" />
+
+    <select id="rating">
+      <option value="">Select rating</option>
+      <option>⭐</option>
+      <option>⭐⭐</option>
+      <option>⭐⭐⭐</option>
+      <option>⭐⭐⭐⭐</option>
+      <option>⭐⭐⭐⭐⭐</option>
+    </select>
+
+    <textarea id="feedbackText" placeholder="Write your feedback..."></textarea>
+    <button class="primary-btn" onclick="submitFeedback()">Submit</button>
+  </div>
+</div>
+
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="script.js"></script>
-
 
 </body>
 </html>
